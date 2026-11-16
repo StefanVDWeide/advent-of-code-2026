@@ -19,5 +19,5 @@ class Day[T](ABC):
     def part_2(self) -> Any: ...
 
     def solve_both_parts(self) -> None:
-        print(f"The solution for day 1 is: {self.part_1()}")
-        print(f"The solution for day 2 is: {self.part_2()}")
+        print(f"The solution for part 1 is: {self.part_1()}")
+        print(f"The solution for part 2 is: {self.part_2()}")
