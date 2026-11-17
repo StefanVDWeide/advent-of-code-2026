@@ -1,3 +1,4 @@
+import inspect
 from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import Any
@@ -9,6 +10,10 @@ class Day[T](ABC):
     def __init__(self, puzzle_input_path: Path) -> None:
         raw_data = puzzle_input_path.read_text().strip("\n")
         self.puzzle_input = self.parse_data(raw_data)
+
+    @classmethod
+    def input_path(cls, filename: str = "input.txt") -> Path:
+        return Path(inspect.getfile(cls)).parent / filename
 
     @abstractmethod
     def parse_data(self, raw_data: str) -> T: ...
