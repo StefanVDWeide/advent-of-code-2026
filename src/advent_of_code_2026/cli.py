@@ -43,6 +43,16 @@ class Part(StrEnum):
 app = typer.Typer(no_args_is_help=True)
 
 
+# If you only have 1 command in Typer (run in this case), it will simply use the app name as the only command
+# since there is only one entry point. So it will become `advent-of-code-2026 5 part_1` instead of
+# `advent-of-code-2026 run 5 part_1`.
+#
+# I do want the explict run command so adding an empty callback fixes this: https://typer.tiangolo.com/tutorial/commands/callback/
+@app.callback()
+def callback() -> None:
+    """Advent of Code 2026 solutions."""
+
+
 @app.command()
 def run(
     day: Annotated[
