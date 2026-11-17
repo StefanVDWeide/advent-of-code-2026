@@ -7,10 +7,11 @@ class Day[T](ABC):
     puzzle_input: T
 
     def __init__(self, puzzle_input_path: Path) -> None:
-        self.puzzle_input = self.parse_data(path=puzzle_input_path)
+        raw_data = puzzle_input_path.read_text().strip("\n")
+        self.puzzle_input = self.parse_data(raw_data)
 
     @abstractmethod
-    def parse_data(self, path: Path) -> T: ...
+    def parse_data(self, raw_data: str) -> T: ...
 
     @abstractmethod
     def part_1(self) -> Any: ...
